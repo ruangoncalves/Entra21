@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Globalization;
-using Logica;
 
 namespace Entra21_exercicios_logica
 {
@@ -259,32 +256,32 @@ namespace Entra21_exercicios_logica
         }
 
         //-------exercicio 9 usando classe
-        static void exe9c(){
+        // static void exe9c(){
 
-            Console.WriteLine("How many numbers will be verify ?");
-            int dimension = int.Parse(Console.ReadLine());
+        //     Console.WriteLine("How many numbers will be verify ?");
+        //     int dimension = int.Parse(Console.ReadLine());
 
-            Array1[] array1 = new Array1[dimension];
-            int soma = 0;
+        //     Array1[] array1 = new Array1[dimension];
+        //     int soma = 0;
 
-            for(int i = 0;i < array1.Length;i++){
-                Console.WriteLine("Write a number");
-                int value = int.Parse(Console.ReadLine());
-                array1[i] = new Array1(value);
-            }
-            for(int i = 1;i < array1.Length;i++){
-                soma += array1[i].Value;
-            }
-            if(soma < array1[0].Value){
-                Console.WriteLine("The first is bigger");
-            }
-            else if(soma == array1[0].Value){
-                Console.WriteLine("They are equals");
-            }
-            else{
-                Console.WriteLine("The first isn't bigger");
-            }
-        }
+        //     for(int i = 0;i < array1.Length;i++){
+        //         Console.WriteLine("Write a number");
+        //         int value = int.Parse(Console.ReadLine());
+        //         array1[i] = new Array1(value);
+        //     }
+        //     for(int i = 1;i < array1.Length;i++){
+        //         soma += array1[i].Value;
+        //     }
+        //     if(soma < array1[0].Value){
+        //         Console.WriteLine("The first is bigger");
+        //     }
+        //     else if(soma == array1[0].Value){
+        //         Console.WriteLine("They are equals");
+        //     }
+        //     else{
+        //         Console.WriteLine("The first isn't bigger");
+        //     }
+        // }
 
         //-------exercicio 10
         static void exe10(){
