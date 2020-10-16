@@ -6,21 +6,22 @@ namespace Domain
 {
     public class Election
     {
+        private  List<Candidate> _candidates {get; set;}
+        public IReadOnlyCollection<Candidate> Candidates => _candidates;
         public Election()
         {
-            var candidate = new List<Candidate>();
+            var _candidates = new List<Candidate>();
         }
-        private  List<Candidate> candidate {get; set;}
-        public IReadOnlyCollection<Candidate> Candidates => candidate;
+        
         public bool CreateCandidates(List<Candidate> candi, string password)
         {
             if (password == "Pa$$w0rd")
             {
-                if(candidate == null)
+                if(candi == null)
                 {
                     return true;
                 }
-                candidate = candi;
+                _candidates = candi;
                 return true;
             }
             else
@@ -29,31 +30,31 @@ namespace Domain
             }
         }
 
-        // ToDo: Este método deve retornar a lista de candidatos que tem o mesmo nome informado
-        public Guid GetCandidateIdByName(string name)
+        public bool Vote(string cpf)
         {
-            return candidate.First(x => x.Name == name).Id;
-        }
-
-        public Guid GetCandidateIdByCpf(string cpf)
-        {
-            return candidate.First(x => x.Cpf == cpf).Id;
+            var candidate = _candidates.FirstOrDefault(x => x.CPF == cpf);
+            if(candidate == null)
+            {
+                return false;
+            }
+            candidate.Vote();
+            return true;
         }
 
         public List<Candidate> GetWinners()
         {
-            var winners = new List<Candidate>{candidate[0]};
+            var winners = new List<Candidate>{_candidates[0]};
 
-            for (int i = 1; i < candidate.Count; i++)
+            for (int i = 1; i < _candidates.Count; i++)
             {
-                if (candidate[i].Votes > winners[0].Votes)
+                if (_candidates[i].Votes > winners[0].Votes)
                 {
                     winners.Clear();
-                    winners.Add(candidate[i]);
+                    winners.Add(_candidates[i]);
                 }
-                else if (candidate[i].Votes == winners[0].Votes)
+                else if (_candidates[i].Votes == winners[0].Votes)
                 {
-                    winners.Add(candidate[i]);
+                    winners.Add(_candidates[i]);
                 }
             }
             return winners;
